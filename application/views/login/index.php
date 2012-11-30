@@ -28,7 +28,7 @@
   <script>
     var app = window.Advice || {};
     app.config = {
-      api_key: 'DSFkEM1R4FGW8omi6HBGxDePAvXZLYLB'
+      api_key: '<?php echo BEHANCE_API_KEY; ?>'
     };
   </script>
 </head>
