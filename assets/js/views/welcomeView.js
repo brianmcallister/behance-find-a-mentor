@@ -34,7 +34,7 @@ define([
 
     // Behance redirect url. This needs to match the redirect URL
     // in the application settings.
-    redirectUrl: window.location.href + '#auth',
+    redirectUrl: window.location.href + 'authorize',
 
     /**
      * Initialize.
@@ -91,6 +91,9 @@ define([
       if (query) {
         queryParams.redirect_uri = queryParams.redirect_uri + '?' + $.param(query);
       }
+      
+      console.log('q', queryParams);
+      // return false;
       
       // Redirect the user to authenticate.
       window.location.href = this.authUrl + '?' + $.param(queryParams);

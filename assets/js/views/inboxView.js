@@ -74,7 +74,6 @@ define([
       if (matches) {
         // Render the matches.
         this.collection.each(function (match) {
-          console.log('match', match);
           markup += this.matchTemplate(match.toJSON());
         }, this);
       } else {

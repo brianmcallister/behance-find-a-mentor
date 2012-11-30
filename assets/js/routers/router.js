@@ -21,7 +21,7 @@ define([
   return Backbone.Router.extend({
     routes: {
       // Authenticatd route.
-      // '?:query': 'authenticateUser',
+      'authorize:query': 'authenticateUser',
 
       // Application routes.
       '': 'welcomePage',
@@ -36,10 +36,6 @@ define([
      */
     initialize: function () {
       this.user = new UserModel();
-      
-      if (window.location.hash === '#auth') {
-        this.authenticateUser(window.location.search);
-      }
     },
 
     /**
