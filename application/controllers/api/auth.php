@@ -4,6 +4,7 @@ class Auth extends MY_Controller {
 
   public function index() {
 
+    $this->load->library('session');
     $this->load->database();
     $this->load->spark('curl/1.2.1');
 
@@ -29,6 +30,10 @@ class Auth extends MY_Controller {
 
     // $response  = $this->_sanitize( $response );
     $user_data = $response;
+
+    $this->session->set_userdata( array(
+      'user' => json_encode( $user_data )
+    ) );
 
 
     // get images and fields
