@@ -47,5 +47,5 @@ define([
 
   // Start it up.
   var router = new Router();
-  Backbone.history.start({pushState: true});
+  Backbone.history.start();
 });

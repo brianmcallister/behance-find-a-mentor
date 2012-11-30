@@ -24,13 +24,31 @@
   <link rel="stylesheet" href="assets/css/style.css">
     
   <script data-main="assets/js/main.js" src="assets/js/libs/require.js"></script>
+  
+  <script>
+    var app = window.Advice || {};
+    app.config = {
+      api_key: 'DSFkEM1R4FGW8omi6HBGxDePAvXZLYLB'
+    };
+  </script>
 </head>
 
 <body>
-  <h2>Find A Mentor</h2>
-  <p>Improve your skillz!</p>
+  <header class="global-header">
+    global header
+    
+    <nav class="global-nav">
+      <ul>
+        <li><a href="#">Link 1</a></li>
+      </ul>
+    </nav>
+  </header>
   
   <div class="container"></div>
+  
+  <footer class="global-footer">
+    footer
+  </footer>
   
   <script>
     var _gaq=[['_setAccount','UA-XXX'],['_trackPageview']];
