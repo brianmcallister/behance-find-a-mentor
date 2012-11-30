@@ -10,10 +10,13 @@ define([
   // Base views.
   'baseviews/baseView',
   
+  // Collections
+  'collections/matchesCollection',
+  
   // Templates.
   'text!templates/inbox.html',
   'text!templates/matched-user.html'
-], function (BaseView, inboxTemplate, matchedUserTemplate) {
+], function (BaseView, MatchesCollection, inboxTemplate, matchedUserTemplate) {
   'use strict';
   
   return BaseView.extend({
@@ -30,6 +33,8 @@ define([
     accountType: 'mentee',
     
     initialize: function () {
+      this.collection = new MatchesCollection();
+      this.collection.fetch();
     },
     
     /**

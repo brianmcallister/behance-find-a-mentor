@@ -6,11 +6,18 @@
 */
 define([
   // Libs.
-  'backbone'
-], function (Backbone) {
+  'backbone',
+  
+  // Models
+  'models/matchModel'
+], function (Backbone, MatchModel) {
   'use strict';
   
-  Backbone.Collection.extend({
+  return Backbone.Collection.extend({
+    url: '/api/users',
+    
+    model: MatchModel,
+    
     initialize: function () {
       console.log('init match collection');
     }
