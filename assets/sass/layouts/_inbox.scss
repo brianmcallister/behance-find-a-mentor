@@ -1,0 +1,66 @@
+/** ----------------------------------
+
+  Inbox
+  -----
+
+  Inbox layout. Main logged in state.
+
+---------------------------------- */
+.inbox-nav-bar {
+  @include pie-clearfix;
+  
+  padding: 20px;
+  color: white;
+  background: black;
+  
+  ul {
+    @include horizontal-list;
+    
+    float: left;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .search-users {
+    float: right;
+  }
+}
+
+.matches-list {
+  padding: 20px 0;
+  
+  & > li {
+    @include pie-clearfix;
+    
+    padding: 20px;
+    border-bottom: 1px solid black;
+    
+    &:first-child {
+      border-top: 1px solid black;
+    }
+    
+    & > div {
+      float: left;
+    }
+  }
+}
+
+.user-image {
+  margin-right: 20px;
+  background: black;
+}
+
+.user-details {
+  
+}
+
+.user-covers {
+  
+}
+
+.user-actions {
+  float: right !important;
+}
