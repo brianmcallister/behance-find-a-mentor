@@ -33,6 +33,7 @@ define([
     accountType: 'mentee',
     
     initialize: function () {
+      // Populate the collection of matches.
       this.collection = new MatchesCollection();
       this.collection.fetch();
     },

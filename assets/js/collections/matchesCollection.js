@@ -18,8 +18,11 @@ define([
     
     model: MatchModel,
     
+    parse: function (response) {
+      return response.users;
+    },
+    
     initialize: function () {
-      console.log('init match collection');
     }
   });
 });

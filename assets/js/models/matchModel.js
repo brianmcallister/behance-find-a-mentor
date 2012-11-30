@@ -10,9 +10,8 @@ define([
 ], function (Backbone) {
   'use strict';
   
-  Backbone.Model.extend({
+  return Backbone.Model.extend({
     initialize: function () {
-      console.log('init match model');
     }
   });
 });
