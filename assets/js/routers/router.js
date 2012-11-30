@@ -64,10 +64,8 @@ define([
 
       // Post the returned code to the Advice API.
       $.post(this.authUrl, query, _.bind(function (response) {
-        console.log('response', response);
         if (response.status === 200) {
           this.user.set(response.user);
-          // window.location.search = '';
           this.navigate('inbox', {trigger: true});
         } else {
           console.log('there was an error');
@@ -98,10 +96,6 @@ define([
      * Returns this.
      */
     inboxPage: function () {
-      console.log('inbox');
-      
-      // window.location.href = '#inbox';
-      
       if (!this.inboxView) {
         this.inboxView = new InboxView({el: 'body', model: this.user});
       }

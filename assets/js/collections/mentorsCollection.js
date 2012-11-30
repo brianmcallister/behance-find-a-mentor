@@ -2,7 +2,7 @@
 /*global define */
 
 /*
-  Matched user collection.
+  Mentors collection.
 */
 define([
   // Libs.

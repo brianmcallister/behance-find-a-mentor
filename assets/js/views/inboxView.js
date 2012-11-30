@@ -26,8 +26,8 @@ define([
     template: _.template(inboxTemplate),
     matchTemplate: _.template(matchedUserTemplate), 
     
-    accountType: 'mentor',
-    // accountType: 'mentee',
+    // accountType: 'mentor',
+    accountType: 'mentee',
     
     initialize: function () {
     },
