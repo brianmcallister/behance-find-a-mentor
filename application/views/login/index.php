@@ -30,6 +30,14 @@
     app.config = {
       api_key: '<?php echo BEHANCE_API_KEY; ?>'
     };
+    
+    <?php
+    $sessionData = $this->session->userdata('user');
+    
+    if (!empty($sessionData)):
+    ?>
+      app.config.user = <?php echo $sessionData; ?>;
+    <?php endif; ?>
   </script>
 </head>
 

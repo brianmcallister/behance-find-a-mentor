@@ -35,9 +35,7 @@ define([
      * Initialize.
      */
     initialize: function () {
-      this.user = new UserModel({
-        username: 'Your Name'
-      });
+      this.user = new UserModel();
       
       if (window.location.hash === '#auth') {
         this.authenticateUser(window.location.search);

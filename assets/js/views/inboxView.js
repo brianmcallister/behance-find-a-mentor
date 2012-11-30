@@ -33,9 +33,18 @@ define([
     accountType: 'mentee',
     
     initialize: function () {
+      console.log('this', this);
+      
+      // Load from the session.
+      if (!this.model.length) {
+        this.model.set(window.app.config.user);
+      }
+      
       // Populate the collection of matches.
       this.collection = new MatchesCollection();
       this.collection.fetch();
+      
+      this.collection.on('reset', this.renderMatches, this);
     },
     
     /**
@@ -54,20 +63,23 @@ define([
         $intro.html(response);
       });
       
-      this.renderMatches();
-      
       return this;
     },
     
     renderMatches: function () {
       var $matchList = this.$el.find('.matches-list'),
         markup = '',
-        test = ['a', 'b', 'c', 'd', 'e'];
+        matches = this.collection.models;
       
-      // Render the matches.
-      _.each(test, function (match) {
-        markup += this.matchTemplate({name: match});
-      }, this);
+      if (matches) {
+        // Render the matches.
+        this.collection.each(function (match) {
+          console.log('match', match);
+          markup += this.matchTemplate(match.toJSON());
+        }, this);
+      } else {
+        markup = 'Sorry, you don\'t have any matches right now.';
+      }
       
       $matchList.html(markup);
     },
