@@ -1,0 +1,98 @@
+/** ----------------------------------
+
+  Buttons
+  -------
+
+  Button module.
+
+---------------------------------- */
+/*
+  Imports.
+*/
+@import 'mixins';
+
+/*
+  Variable defaults.
+*/
+
+/*
+  Mixon.
+*/
+@mixin buttons {
+  .button {
+    @extend %button-layout;
+    
+    &.large {
+      @extend %large-button;
+    }
+  }
+  
+  .button-bar {
+    @extend %button-bar-layout;
+  }
+}
+
+
+/** ----------------------------------
+
+    Module extends.
+    
+---------------------------------- */
+%button-layout {
+  @include inline-block;
+  @include transition(background-color .2s ease-out);
+  
+  text-decoration: none;
+  font-size: 16px;
+}
+
+%button-bar-layout {
+  .buttons {
+    @include inline-block;
+    @include pie-clearfix;
+  }
+  
+  .button {
+    float: left;
+    display: block;
+    padding: 10px 40px;
+    color: $darkgray;
+    background-color: #eee;
+    border-left: 1px solid darken(#eee, 15%);
+    border-right: 1px solid lighten(#eee, 5%);
+    
+    &:first-child {
+      border-left: 0;
+    }
+    
+    &:last-child {
+      border-right: 0;
+    }
+    
+    &:hover {
+      background-color: darken(#eee, 10%);
+    }
+    
+    &.active {
+      color: white;
+      background-color: $blue;
+    }
+  }
+}
+
+%large-button {
+  @include background(linear-gradient(rgba(darken(white, 5%), .8), rgba(darken(#f3f3f3, 10%), .8)));
+  @include border-radius(5px);
+  @include box-shadow(0 0 5px 0 rgba($blue, .5));
+  
+  padding: 20px 30px;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  text-shadow: 0 1px 1px white;
+  background-color: white;
+  
+  &:hover {
+    background-color: darken(white, 50%);
+  }
+}

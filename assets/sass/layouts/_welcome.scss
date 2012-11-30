@@ -1,0 +1,46 @@
+/** ----------------------------------
+
+  Welcome
+  -------
+
+  Welcome page layout.
+
+---------------------------------- */
+.page-welcome {
+}
+
+.welcome-header {
+  @include pie-clearfix;
+  @include position(relative);
+  
+  margin-top: 50px;
+  
+  .global-logo {
+    float: left;
+    margin: 30px 0;
+  }
+  
+  .sign-in {
+    @include position(absolute, -35px 0px);
+    
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .intro-text {
+    width: 60%;
+    float: right;
+  }
+}
+
+/*
+  Container for the sign in buttons.
+*/
+.sign-in-buttons {
+  margin: 80px 0 0 0;
+  text-align: center;
+  
+  .sign-up {
+    margin: 10px 0;
+  }
+}

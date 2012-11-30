@@ -34,21 +34,7 @@
 </head>
 
 <body>
-  <header class="global-header">
-    global header
-    
-    <nav class="global-nav">
-      <ul>
-        <li><a href="#">Link 1</a></li>
-      </ul>
-    </nav>
-  </header>
-  
   <div class="container"></div>
-  
-  <footer class="global-footer">
-    footer
-  </footer>
   
   <script>
     var _gaq=[['_setAccount','UA-XXX'],['_trackPageview']];
