@@ -1,7 +1,7 @@
 .DS_Store
 
 # Sass
-sass-cache
+.sass-cache
 
 # Generated files.
 assets/css
