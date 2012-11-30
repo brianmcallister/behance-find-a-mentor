@@ -8,11 +8,14 @@ define([
   // Libs
   'jquery',
   'backbone',
+  
+  // Models
+  'models/userModel',
 
   // Views
   'views/welcomeView',
   'views/inboxView',
-], function ($, Backbone, WelcomeView, InboxView) {
+], function ($, Backbone, UserModel, WelcomeView, InboxView) {
   'use strict';
 
   return Backbone.Router.extend({
@@ -32,6 +35,9 @@ define([
      * Initialize.
      */
     initialize: function () {
+      this.user = new UserModel({
+        username: 'Your Name'
+      });
     },
 
     /**
@@ -83,7 +89,7 @@ define([
       console.log('inbox');
       
       if (!this.inboxView) {
-        this.inboxView = new InboxView({el: 'body'});
+        this.inboxView = new InboxView({el: 'body', model: this.user});
       }
       
       this.inboxView.render();

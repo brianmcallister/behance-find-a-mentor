@@ -17,6 +17,8 @@
 
       // Dirs
       'baseviews': 'views/base',
+      'models': 'models',
+      'collections': 'collections',
       'routers': 'routers',
       'templates': '../templates'
     },

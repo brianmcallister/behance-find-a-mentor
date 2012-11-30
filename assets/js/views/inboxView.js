@@ -17,6 +17,12 @@ define([
   'use strict';
   
   return BaseView.extend({
+    events: {
+      'click .save-user': 'saveUser',
+      'click .delete-user': 'deleteUser',
+      'click .contact-user': 'contactUser'
+    },
+    
     template: _.template(inboxTemplate),
     matchTemplate: _.template(matchedUserTemplate), 
     
@@ -31,9 +37,9 @@ define([
      */
     render: function () {
       var $intro;
-      
+
       // Render the main template.
-      this.$el.find('.container').html(this.template());
+      this.$el.find('.container').html(this.template(this.model.toJSON()));
       
       $intro = this.$el.find('.account-type-text');
       
@@ -58,6 +64,25 @@ define([
       }, this);
       
       $matchList.html(markup);
+    },
+    
+    saveUser: function (event) {
+      event.preventDefault();
+    },
+    
+    deleteUser: function (event) {
+      var $target = $(event.target),
+        $userEntry = $target.closest('.matched-user');
+        
+      event.preventDefault();
+      
+      $userEntry.fadeOut(function () {
+        $userEntry.remove();
+      });
+    },
+    
+    contactUser: function (event) {
+      event.preventDefault();
     }
   });
 });

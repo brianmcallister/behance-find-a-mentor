@@ -8,10 +8,12 @@
 ---------------------------------- */
 .inbox-nav-bar {
   @include pie-clearfix;
+  @include border-radius;
+  @include background(linear-gradient(-80deg, lighten(black, 30%), black));
   
+  margin: 10px 0;
   padding: 20px;
   color: white;
-  background: black;
   
   ul {
     @include horizontal-list;
@@ -19,9 +21,25 @@
     float: left;
   }
   
+  li {
+    margin: 0 10px;
+  }
+  
   a {
     color: white;
     text-decoration: none;
+  }
+  
+  .view-contacts {
+    @include replace-text-with-dimensions('contacts.png');
+    
+    display: block;
+  }
+  
+  .view-address {
+    @include replace-text-with-dimensions('envelope.png');
+    
+    display: block;
   }
   
   .search-users {
