@@ -32,12 +32,12 @@ class Auth extends MY_Controller {
 
 
     // get images and fields
-    $image  = $response['images'];
-    $fields = $response['fields'];
-    unset(
-      $response['images'],
-      $response['fields']
-    );
+    // $image  = $response['images'];
+    // $fields = $response['fields'];
+    // unset(
+    //   $response['images'],
+    //   $response['fields']
+    // );
 
     // print_r( $response );
 

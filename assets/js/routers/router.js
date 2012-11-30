@@ -21,7 +21,7 @@ define([
   return Backbone.Router.extend({
     routes: {
       // Authenticatd route.
-      'auth:query': 'authenticateUser',
+      '?:query': 'authenticateUser',
 
       // Application routes.
       '': 'welcomePage',
@@ -29,7 +29,7 @@ define([
     },
     
     // User authentication URL for the Advice API.
-    authUrl: '/api/authorize',
+    authUrl: '/api/auth',
 
     /**
      * Initialize.
@@ -38,6 +38,10 @@ define([
       this.user = new UserModel({
         username: 'Your Name'
       });
+      
+      if (window.location.hash === '#auth') {
+        this.authenticateUser(window.location.search);
+      }
     },
 
     /**
@@ -55,13 +59,21 @@ define([
      */
     authenticateUser: function (route) {
       var query = this.parseQueryString(route);
+      
+      console.log('query', query);
 
       // Post the returned code to the Advice API.
-      $.post(this.authUrl, function (response) {
-        console.log('response', response);
-      });
+      $.post(this.authUrl, query, _.bind(function (response) {
+        if (response.status === 200) {
+          console.log('success',this)
+          
+          this.user.set(response.user);
+          this.inboxPage();
+        } else {
+          console.log('there was an error');
+        }
+      }, this));
 
-      console.log('query', query);
       return this;
     },
 
