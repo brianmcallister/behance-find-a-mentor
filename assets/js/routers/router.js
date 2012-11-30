@@ -6,50 +6,39 @@
 */
 define([
   // Libs
+  'jquery',
   'backbone',
-  
+
   // Views
-  'views/welcomeView'
-], function (Backbone, WelcomeView) {
+  'views/welcomeView',
+  'views/inboxView',
+], function ($, Backbone, WelcomeView, InboxView) {
   'use strict';
-  
+
   return Backbone.Router.extend({
     routes: {
       // Authenticatd route.
       'auth:query': 'authenticateUser',
-      
+
       // Application routes.
-      '': 'welcomePage'
+      '': 'welcomePage',
+      'inbox': 'inboxPage'
     },
     
-    tokenUrl: 'https://www.behance.net/v2/oauth/token',
-    
+    // User authentication URL for the Advice API.
+    authUrl: '/api/authorize',
+
     /**
      * Initialize.
      */
     initialize: function () {
     },
-    
+
     /**
      * All test route.
      */
     all: function (route) {
       console.log('route', route);
-    },
-    
-    /**
-     * Home page route.
-     *
-     * Returns this.
-     */
-    welcomePage: function () {
-      if (!this.welcomeView) {
-        this.welcomeView = new WelcomeView({el: 'body'});
-      }
-      
-      this.welcomeView.render();
-      
-      return this;
     },
     
     /**
@@ -60,11 +49,48 @@ define([
      */
     authenticateUser: function (route) {
       var query = this.parseQueryString(route);
-      
+
+      // Post the returned code to the Advice API.
+      $.post(this.authUrl, function (response) {
+        console.log('response', response);
+      });
+
       console.log('query', query);
       return this;
     },
-    
+
+    /**
+     * Home page route.
+     *
+     * Returns this.
+     */
+    welcomePage: function () {
+      if (!this.welcomeView) {
+        this.welcomeView = new WelcomeView({el: 'body'});
+      }
+
+      this.welcomeView.render();
+
+      return this;
+    },
+
+    /**
+     * Inbox page. Main logged in view.
+     *
+     * Returns this.
+     */
+    inboxPage: function () {
+      console.log('inbox');
+      
+      if (!this.inboxView) {
+        this.inboxView = new InboxView({el: 'body'});
+      }
+      
+      this.inboxView.render();
+      
+      return this;
+    },
+
     /**
      * Parse a query string.
      *
@@ -74,7 +100,7 @@ define([
      */
     parseQueryString: function (string) {
       var query = {};
-      
+
       // Remove the '?'
       if (string.charAt(0) === '?') {
         string = string.slice(1);

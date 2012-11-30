@@ -4,3 +4,49 @@
   ------
 
 ---------------------------------- */
+/*
+  Print position coords only.
+  https://gist.github.com/3641867
+  @param {List} $values Position values. Unitless numbers get skipped over.
+*/
+@mixin pos-coords($values: 0 0 0 0) {
+  $position-list: top right bottom left;
+  $count: 1;
+  
+  @if length($values) == 1 and $values == 'reset' {
+    $values: auto auto auto auto;
+  }
+  
+  @each $value in $values {
+    @if $value == 'auto' or not(unitless($value)) {
+      $pos: nth($position-list, $count);
+      #{$pos}: $value;
+    }
+    $count: $count + 1;
+  }
+}
+
+/*
+  Reset position coords mixin.
+*/
+@mixin reset-coords() {
+  @include pos-coords('reset');
+}
+
+/*
+  Position mixin.
+  @param {CSS Keyword} $type Position type.
+  @param {List} $values Position values. Unitless numbers get skipped over.
+  @param {Number} [$z-index] z-index value.
+*/
+@mixin position($type: relative, $values: 0 0 0 0, $z-index: '') {
+  position: $type;
+  
+  @if $type != 'static' and $type != 'inherit' {
+    @include pos-coords($values);
+    
+    @if $z-index != '' {
+      z-index: $z-index;
+    }
+  }
+}
