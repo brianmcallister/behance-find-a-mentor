@@ -5,11 +5,47 @@
   'use strict';
 
   require.config({
-    
+    appDir: 'assets/js',
+    baseUrl: 'assets/js',
+    paths: {
+      // Libs
+      'jquery': 'libs/jquery',
+      'underscore': 'libs/underscore',
+      'backbone': 'libs/backbone',
+      'modernizr': 'libs/modernizr',
+      'text': 'libs/text',
+
+      // Dirs
+      'baseviews': 'views/base',
+      'routers': 'routers',
+      'templates': '../templates'
+    },
+    shim: {
+      'modernizr': {
+        exports: 'Modernizr'
+      },
+      'underscore': {
+        exports: '_'
+      },
+      'backbone': {
+        deps: ['jquery', 'underscore'],
+        exports: 'Backbone'
+      }
+    }
   });
 }());
 
 define([
-], function () {
+  // Libs
+  'backbone',
+  'modernizr',
+
+  // Router
+  'routers/router'
+], function (Backbone, Modernizr, Router) {
   'use strict';
+
+  // Start it up.
+  var router = new Router();
+  Backbone.history.start({pushState: true});
 });

@@ -30,6 +30,8 @@
   <h2>Find A Mentor</h2>
   <p>Improve your skillz!</p>
   
+  <div class="container"></div>
+  
   <script>
     var _gaq=[['_setAccount','UA-XXX'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
