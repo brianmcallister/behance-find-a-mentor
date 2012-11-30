@@ -1,5 +1,8 @@
 .DS_Store
 
+# Configuration
+application/config
+
 # Sass
 .sass-cache
 
